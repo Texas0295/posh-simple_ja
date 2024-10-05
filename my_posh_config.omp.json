@@ -1,12 +1,86 @@
 {
     "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-    "final_space": true,
     "version": 2,
+
+    "transient_prompt": {
+        "background": "transparent",
+        "foreground": "#FFFFFF"
+    },
+
+    "console_title_template": "フォルダ: [ {{ .Folder }} ]",
+
     "blocks": [
         {
             "type": "prompt",
             "alignment": "left",
-            "segments": []
+            "segments": [
+                {
+                    "type": "session",
+                    "foreground":"#FFFFFF",
+                    "template": "ユーザー名: {{ .UserName }} | ",
+                    "style": "diamond"
+                },
+                {
+                    "foreground": "#FFFFFF",
+                    "properties": {
+                        "branch_icon": "\ue725 ",
+                        "fetch_stash_count": true,
+                        "fetch_status": true,
+                        "fetch_upstream_icon": true,
+                        "fetch_worktree_count": true
+                    },
+                    "style": "diamond",
+                    "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
+                    "type": "git"
+                }
+            ]
+        },
+        {
+            "type": "prompt",
+            "alignment": "right",
+            "segments": [
+                {
+                    "type": "executiontime",
+                    "style": "diamond",
+                    "foreground": "#FFFFFF",
+                    "template": "{{ .FormattedMs }}s かかる",
+                    "properties": {
+                        "style": "dallas",
+                        "threshold": 0
+                    }
+                }
+            ]
+        },
+        {
+            "alignment": "left",
+            "newline": true,
+            "type": "prompt",
+            "segments": [
+                {
+                    "type": "path",
+                    "style": "diamond",
+                    "foreground": "#FFFFFF",
+                    "template": " \ue5ff {{ .Path }} ",
+                    "leading_diamond": "<#FFFFFF>[</>", 
+                    "trailing_diamond": "<#FFFFFF>]</>", 
+                    "properties": {
+                        "folder_separator_icon": " -> ",
+                        "style": "agnoster_full"
+                    }
+                },
+                {
+                    "type": "status",
+                    "foreground": "#FFFFFF",
+                    "foreground_templates": [
+                        "{{if gt .Code 0}}#D93A26{{ end }}"
+                    ],
+                    "properties": {
+                        "always_enabled": true
+                    },
+                    "style": "plain",
+                    "template": " > "
+                }
+            ]
         }
     ]
 }
