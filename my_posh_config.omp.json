@@ -17,7 +17,7 @@
                 {
                     "type": "session",
                     "foreground":"#FFFFFF",
-                    "template": "ユーザー名: {{ .UserName }} | ",
+                    "template": "ユーザー名: {{ .UserName }} ",
                     "style": "diamond"
                 },
                 {
