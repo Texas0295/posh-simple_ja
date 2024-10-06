@@ -4,7 +4,8 @@
 
     "transient_prompt": {
         "background": "transparent",
-        "foreground": "#FFFFFF"
+        "foreground": "#FFFFFF",
+        "template": "実行 > "
     },
 
     "console_title_template": "フォルダ: [ {{ .Folder }} ]",
