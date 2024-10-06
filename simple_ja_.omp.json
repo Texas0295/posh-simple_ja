@@ -65,7 +65,8 @@
                     "trailing_diamond": "<#FFFFFF>]</>", 
                     "properties": {
                         "folder_separator_icon": " -> ",
-                        "style": "agnoster_full"
+                        "style": "agnoster_full",
+                        "home_icon": "Home"
                     }
                 },
                 {
